@@ -58,7 +58,19 @@ log_temp.o: log_temp.cpp \
  C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/Wire/Wire.h \
  C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/WiFi/utility/udma_if.h \
  C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/WiFi/utility/simplelink.h \
- C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/cores/cc3200/driverlib/prcm.h
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/cores/cc3200/driverlib/prcm.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/WifiIPStack.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/Countdown.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTClient.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/FP.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTPacket.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTConnect.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTPublish.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTSubscribe.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTUnsubscribe.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTFormat.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/StackTrace.h \
+ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTLogging.h
 
 C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/WiFi/WiFi.h:
 
@@ -179,3 +191,27 @@ C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/WiFi/utility/udm
 C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/WiFi/utility/simplelink.h:
 
 C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/cores/cc3200/driverlib/prcm.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/WifiIPStack.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/Countdown.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTClient.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/FP.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTPacket.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTConnect.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTPublish.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTSubscribe.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTUnsubscribe.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTFormat.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/StackTrace.h:
+
+C:/ti/tirex-content/energia-0101E0017/hardware/cc3200/libraries/MQTTClient/MQTTLogging.h:

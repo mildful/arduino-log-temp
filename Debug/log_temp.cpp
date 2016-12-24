@@ -6,6 +6,10 @@
 #include "utility/simplelink.h"
 #include "driverlib/prcm.h"
 
+#include <WifiIPStack.h>
+#include <Countdown.h>
+#include <MQTTClient.h>
+
 
 #define CONF_FILE "/storage/conf_6.txt"
 
@@ -21,7 +25,7 @@ void blinkRed(unsigned long currentMillis, int interval);
 void setup();
 void loop();
 
-#line 12
+#line 16
 WiFiServer myServer(80);
 uint8_t oldCountClients = 0;
 uint8_t countClients = 0;
@@ -31,7 +35,7 @@ char wifi_password[] = "foobar123";
 
 Adafruit_TMP006 tmp006(0x41);
 unsigned long temp_previousMillis = 0;
-const int temp_interval = 500;
+const int temp_interval = 1000;
 const int temp_blinkRate = 1000;
 
 const int push_interval = 2000;
@@ -40,8 +44,11 @@ boolean readyToReset = false;
 int resetBlinkRate = 200;
 
 
-char mqtt_hostname[] = "192.168.1.22";
+const char* topic = "temperature";
+char mqtt_address[] = "192.168.1.32";
 int mqtt_port = 1883;
+WifiIPStack ipstack;
+MQTT::Client<WifiIPStack, Countdown> client = MQTT::Client<WifiIPStack, Countdown>(ipstack);
 
 void createConf(String ssid, String pwd) {
 	int32_t retval = SerFlash.open(CONF_FILE,
@@ -405,9 +412,9 @@ void loop() {
 	unsigned long currentMillis = millis();
 
 	if (currentMillis - temp_previousMillis > temp_interval) {
+		temp_previousMillis = currentMillis;
 	    float diet = tmp006.readDieTempC();
-	    Serial.println(diet);
-
+		
 	    if(!readyToReset) {
 	    	if (diet > 40)
 			{
@@ -418,6 +425,38 @@ void loop() {
 				blinkRed(currentMillis, temp_blinkRate);
 			}
 	    }
+	    
+	    int rc = -1;
+	    
+	    if(!client.isConnected()) {
+	    	Serial.println("Connecting to MQTT...");
+
+	    	while (rc != 0) {
+	    		rc = ipstack.connect(mqtt_address, mqtt_port);
+	    	}
+
+	    	MQTTPacket_connectData connectData = MQTTPacket_connectData_initializer;
+			connectData.MQTTVersion = 3;
+			connectData.clientID.cstring = (char*)"poly-launchpad";
+
+			rc = -1;
+		    while ((rc = client.connect(connectData)) != 0)
+		      ;
+		    Serial.println("Connected to MQTT !\n");
+	    }
+	    
+	    char json[50];
+	    sprintf(json, "%f", diet);
+	    MQTT::Message message;
+	    message.qos = MQTT::QOS0;
+	    message.retained = false;
+	    message.dup = false;
+	    message.payload = (void*) json;
+	    message.payloadlen = strlen(json) + 1;
+	    rc = client.publish(topic, message);
+	    Serial.print(diet);
+	    Serial.print(" - ");
+	    Serial.println(json);
 	}
 
 	int pushState = digitalRead(PUSH2);
